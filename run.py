@@ -33,24 +33,25 @@ def set_ship(size):
     num_ship = random.randint(2, size)
     aim = random.randint(0, 1)
     if aim == 0:
-        row_ship = [random.randint(0,size - 1)] * num_ship
+        row_ship = [random.randint(0, size - 1)] * num_ship
         col = random.randint(0, size - num_ship)
         col_ship = list(range(col, col + num_ship))
         coords = tuple(zip(row_ship, col_ship))
     else:
         col_ship = [random.randint(0, size -1)] * num_ship
-        row = random.randint(0, dims - num_ship)
-        row_ship = list(range(row, row + num-ship))
+        row = random.randint(0, size - num_ship)
+        row_ship = list(range(row, row + num_ship))
+        coords = tuple(zip(row_ship, col_ship))
     return list(coords)
 
-ship = set_board(2); ship
+ship = set_ship(2); ship
 
 def make_guess():
     """
     Convert all strings values into integers
     """
-    row = int(input('row: ')) 
-    col = int(input('col: '))
+    row = int(input('row: ')) - 1
+    col = int(input('col: ')) - 1
     return (row, col)
 value = make_guess(); value
 
@@ -63,9 +64,23 @@ def update_board(guess, board, ship, guesses):
         print("Bravo! You have hit my battleship.")
         board[guess[0]][guess[1]] = "¤"
         ship.remove(guess)
-    print("Opps! You have missed.\n")
+    else:
+        print("Opps! You have missed.")
     return board
 
 guesses = []
 our_guess = make_guess()
 board = update_board(our_guess, board, ship, guesses)
+print_board(board)
+
+def main():
+    board = set_board(4)
+    ship = set_ship(2)
+    guesses = []
+    while len(ship) > 0:
+        board = update_board(make_guess(), board, ship, guesses)
+        print_board(board)
+    print('You sunk my battleship!')
+    return 
+
+main()
