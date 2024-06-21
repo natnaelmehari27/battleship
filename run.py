@@ -45,3 +45,11 @@ def set_ship(size):
 
 ship = set_board(2); ship
 
+def make_guess():
+    """
+    Convert all strings values into integers
+    """
+    row = int(input('row: ')) 
+    col = int(input('col: '))
+    return (row, col)
+value = make_guess(); value
