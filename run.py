@@ -25,3 +25,23 @@ def print_board(board):
 
 board = set_board(4)
 print_board(board)
+
+def set_ship(size):
+    """
+    Add the coordinates for the ship of the game
+    """
+    num_ship = random.randint(2, size)
+    aim = random.randint(0, 1)
+    if aim == 0:
+        row_ship = [random.randint(0,size - 1)] * num_ship
+        col = random.randint(0, size - num_ship)
+        col_ship = list(range(col, col + num_ship))
+        coords = tuple(zip(row_ship, col_ship))
+    else:
+        col_ship = [random.randint(0, size -1)] * num_ship
+        row = random.randint(0, dims - num_ship)
+        row_ship = list(range(row, row + num-ship))
+    return list(coords)
+
+ship = set_board(2); ship
+
