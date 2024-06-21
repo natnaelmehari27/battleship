@@ -53,3 +53,19 @@ def make_guess():
     col = int(input('col: '))
     return (row, col)
 value = make_guess(); value
+
+def update_board(guess, board, ship, guesses):
+    if guess in guesses:
+        print("You already guessed that!\n")
+        return board
+    guesses.append(guess)
+    if guess in ship:
+        print("Bravo! You have hit my battleship.")
+        board[guess[0]][guess[1]] = "¤"
+        ship.remove(guess)
+    print("Opps! You have missed.\n")
+    return board
+
+guesses = []
+our_guess = make_guess()
+board = update_board(our_guess, board, ship, guesses)
