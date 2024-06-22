@@ -53,20 +53,16 @@ I have manually tested this project by doing the following:
 - Given invalid inputs: strings when numbers are excepted, out of bounds inputs
 - Tested in my local terminal and the code insititute Heroku terminal.
 
-###### Bugs 
-
-__solved bugs__
-- The final commit i used when i was fixing bugs according to the CI python linter, it didn't push because apparently i had opened many tabs on my pc of the same workspace and accidently tried to commit it using the old workspace but it would not push because it says i have another opened locally opened terminal.
+##### Bugs 
 
 __Remaining bugs__
-
-- No bugs remaining
+- The final commit i used when i was fixing bugs according to the CI python linter, it didn't push because apparently i had opened many tabs on my pc of the same workspace and accidently tried to commit it using the old workspace but it would not push because it says i have another opened locally opened terminal.
 
 __Validator Testing__
 - PEP8
   - Errors found have been fixed from PEP8online.com. it was mostly a lot of whitespace or less of whitespace between functions
  
-###### Deployment
+##### Deployment
 
 This project was deployued using Code Institiute's mock terminal for Heroku.
 - Steps for deployment:
@@ -76,7 +72,7 @@ This project was deployued using Code Institiute's mock terminal for Heroku.
   - Link the Heroku appto the repository
   - click on Deploy
  
-###### Credits 
+##### Credits 
 - Code institiute for the deployment terminal
 - Wikipedia for the details of the battleship game
 - For the project submisson course video for helping me understand more about how i can do this. 
