@@ -1,32 +1,40 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleships
 
-Welcome,
+Battle is a Python terminal gmae, which runs in the Code Institiute mock terminal on Heroku.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+Players can try to beat the computer by finding the battleships hidden my the computer. Each battleship occupies one square on the board.
 
-## Reminders
+[Here is the live version of the project](https://battleshipss-33d29b297183.herokuapp.com/)
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+![all-devices-white](https://github.com/natnaelmehari27/battleship/assets/159337397/f38189d9-8544-46aa-a922-ce011ea9255d)
 
-## Creating the Heroku app
+## How to play 
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+Battleships is based on the classic pen-and-paper game. you can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)). It is played on ruled grids (paper or board) on which each player's fleet of warships are marked. The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet. 
 
-1. `heroku/python`
-2. `heroku/nodejs`
+In this version, the player first enters their name and is then asked to place a row and column to hide the player's ship from the computer. the player knows where their ships are but cannot see where the computer's ships are located. Hits are indicated by ¤.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+when the player sinks all of their opponenet's battleship, the player is declared victory.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Features 
 
-Connect your GitHub repository and deploy as normal.
+#### Existing Features 
 
-## Constraints
+__Random board generation__
+- Ships are randomly placed on player's board.
+- The player cannot see where the computer's ships are
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+  <img width="533" alt="Skärmbild 2024-06-22 092306" src="https://github.com/natnaelmehari27/battleship/assets/159337397/acb7a725-a1b3-43fe-aea8-3abfa8ca0931">
 
----
+- Plays against the computer
+- Accepts user input
+- Maintains Scores
 
-Happy coding!
+  <img width="533" alt="Skärmbild 2024-06-22 093150" src="https://github.com/natnaelmehari27/battleship/assets/159337397/bbffa1b1-eb5c-4ae9-8ecb-1e77eb9f8c51">
+
+- Input validation and error-checking
+  - You must enter numbers
+  - You cannot enter the same guess twice
+
+
+
