@@ -57,6 +57,7 @@ I have manually tested this project by doing the following:
 
 __Remaining bugs__
 - The final commit i used when i was fixing bugs according to the CI python linter, it didn't push because apparently i had opened many tabs on my pc of the same workspace and accidently tried to commit it using the old workspace but it would not push because it says i have another opened locally opened terminal.
+- At the last minute i ruined everything i think because, i could push or pull my commits. commits on github like update READ.ME is not going to gitpod or the pitpod commit are not pushing to github. it's less than 30 mintues before submission and i don't think i have time to start another one.
 
 __Validator Testing__
 - PEP8
