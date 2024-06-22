@@ -1,6 +1,6 @@
 # Battleships
 
-Battle is a Python terminal gmae, which runs in the Code Institiute mock terminal on Heroku.
+Battle is a Python terminal game, which runs in the Code Institiute's mock terminal on Heroku.
 
 Players can try to beat the computer by finding the battleships hidden my the computer. Each battleship occupies one square on the board.
 
@@ -35,6 +35,54 @@ __Random board generation__
 - Input validation and error-checking
   - You must enter numbers
   - You cannot enter the same guess twice
+
+  <img width="532" alt="Skärmbild 2024-06-22 102036" src="https://github.com/natnaelmehari27/battleship/assets/159337397/e982f3cb-c13c-42d2-bc7e-2b6fbc070ac6">
+
+  __Future Features__
+  - Allow players to play against other players
+  - Allow the computer to play with the player
+
+#### Data Model 
+
+I decided to use a Board class model as my model. The game creates a board class to hold the player's ship and the computer's ship. The baord class stores the board size, the number of ships, the position of the ships, the guesses against that board, and the details such as the type.
+
+##### Testing 
+
+I have manually tested this project by doing the following:
+- Passed the code through a PEP8 linter and confirmed there is no problems.
+- Given invalid inputs: strings when numbers are excepted, out of bounds inputs
+- Tested in my local terminal and the code insititute Heroku terminal.
+
+###### Bugs 
+
+__solved bugs__
+- The final commit i used when i was fixing bugs according to the CI python linter, it didn't push because apparently i had opened many tabs on my pc of the same workspace and accidently tried to commit it using the old workspace but it would not push because it says i have another opened locally opened terminal.
+
+__Remaining bugs__
+
+- No bugs remaining
+
+__Validator Testing__
+- PEP8
+  - Errors found have been fixed from PEP8online.com. it was mostly a lot of whitespace or less of whitespace between functions
+ 
+###### Deployment
+
+This project was deployued using Code Institiute's mock terminal for Heroku.
+- Steps for deployment:
+  - Fork or clone this repository
+  - Create a new Heroku app
+  - Set the buildbakcs to python and Node75 in that order
+  - Link the Heroku appto the repository
+  - click on Deploy
+ 
+###### Credits 
+- Code institiute for the deployment terminal
+- Wikipedia for the details of the battleship game
+- For the project submisson course video for helping me understand more about how i can do this. 
+  
+  
+
 
 
 
