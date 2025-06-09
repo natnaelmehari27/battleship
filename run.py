@@ -1,15 +1,22 @@
 import random 
 
+
 def start_message():
-    """"
-    create the start message for the Battleships playground
+    """
+    Display the start message for the Battleships playground
     """
     print("~" * 27)
     print("WELCOME TO BATTLESHIPS\n")
-    print("There is a battleship hidden awaiting for you. come and try to sink it!")
+    print("There is a Battleship hidden awaiting for you. Come and try to sink it!")
     print("~" * 27)
-    input("please enter your name here: \n")
-    print("~" * 27)
+    while True:
+        name = input("Please enter your name here: \n").strip()
+        if name:
+            print(f"Welcome, {name}!")
+            print("~" * 27)
+            return name
+        print("Error: Name cannot be blank. Please enter your name.")
+
     
 def set_board(size):
     """
