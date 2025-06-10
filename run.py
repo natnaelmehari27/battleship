@@ -17,13 +17,18 @@ def start_message():
             return name
         print("Error: Name cannot be blank. Please enter your name.")
 
-    
-def set_board(size):
+
+def prompt_guess(size):
     """
-    Create the square playground for the Battleship game
+    Prompt the user to enter a valid guess within the board range.
+    Returns zero-based (row, col) tuple.
     """
-    print("Hi, first start by hiding your battleship")
-    return[['.' for count in range(size)] for count in range(size)]
+    while True:
+        try:
+            print(f"Enter your guess coordinates (row and column) between 1 and {size}.")
+            row_input = input("Row: ").strip()
+            col_input = input("Column: ").strip()
+            if not row_input or not col_input:
 
 def print_board(board):
     for b in board:
