@@ -106,6 +106,24 @@ def update_board_with_guess(guess, board, ship_coords, previous_guesses):
         return False
 
 
+def ask_play_again():
+    """
+    Prompt the user if they want to play again.
+    Returns True if yes, False if no.
+    """
+    while True:
+        choice = input("Would you like to play again? (1 for Yes, 2 for No): ").strip()
+        if choice == "1":
+            print("Starting a new game!")
+            print("~" * 27)
+            return True
+        elif choice == "2":
+            print("Thanks for playing Battleships! Goodbye!")
+            print("~" * 27)
+            return False
+        else:
+            print("Invalid input. Please enter 1 (Yes) or 2 (No).")
+
 def play_game():
     # ...
     previous_guesses = set()
