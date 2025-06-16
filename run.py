@@ -125,8 +125,29 @@ def ask_play_again():
             print("Invalid input. Please enter 1 (Yes) or 2 (No).")
 
 def play_game():
-    # ...
+    """
+    Main game loop. Initializes the board and ship,
+    manages user guesses and updates until ship is sunk.
+    """
+    size = 4  # default board size
+    board = create_board(size)
+    ship_coords = place_ship(size)
     previous_guesses = set()
+
+    while ship_coords:
+        print_board(board)
+        guess = prompt_guess(size)
+        result = update_board_with_guess(guess, board, ship_coords, previous_guesses)
+
+        # If repeated guess, no need to check for win since no progress
+        if result is None:
+            continue  # ask for another guess
+
+    print_board(board)
+    print("~" * 27)
+    print("Congratulations! You sunk the battleship!")
+    print("~" * 27)
+    
 
 
 
