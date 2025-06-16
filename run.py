@@ -29,11 +29,26 @@ def prompt_guess(size):
             row_input = input("Row: ").strip()
             col_input = input("Column: ").strip()
             if not row_input or not col_input:
+                print("Error: Input cannot be blank. Please enter numbers.")
+                continue
+            row = int(row_input)
+            col = int(col_input)
+            if 1 <= row <= size and 1 <= col <= size:
+                return row - 1, col - 1
+            print(f"Error: Coordinates out of bounds. Please enter numbers 1 to {size}.")
+        except ValueError:
+            print("Error: Invalid input. Please enter numeric integers only.")
 
 def print_board(board):
-    for b in board:
-        print(*b)
-
+    """
+    Display the board with row and column numbers for user reference.
+    """
+    size = len(board)
+    # Print column headers
+    print("   " + " ".join(str(i + 1) for i in range(size)))
+    for idx, row in enumerate(board, 1):
+        print(f"{idx:<2} " + " ".join(row))
+        
 def set_ship(size):
     """
     Add the coordinates for the ship of the game
