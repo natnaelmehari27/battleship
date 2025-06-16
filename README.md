@@ -1,20 +1,23 @@
 # Battleships
 
-Battle is a Python terminal game, which runs in the Code Institiute's mock terminal on Heroku.
+Battleships is a Python terminal game played in Code Institute's mock terminal on Heroku.
 
-Players can try to beat the computer by finding the battleships hidden my the computer. Each battleship occupies one square on the board.
+In this game, you try to find and sink a hidden battleship placed randomly by the computer on a 4x4 grid. You enter guesses for grid coordinates to try and hit the ship before it is sunk.
 
-[Here is the live version of the project](https://battleshipss-33d29b297183.herokuapp.com/)
+[Live version of the project](https://battleshipss-33d29b297183.herokuapp.com/)
 
 ![all-devices-white](https://github.com/natnaelmehari27/battleship/assets/159337397/f38189d9-8544-46aa-a922-ce011ea9255d)
 
 ## How to play 
 
-Battleships is based on the classic pen-and-paper game. you can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)). It is played on ruled grids (paper or board) on which each player's fleet of warships are marked. The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet. 
+Battleships is based on the classic pen-and-paper game where players attempt to sink their opponent's fleet by guessing coordinate positions on a grid.
 
-In this version, the player first enters their name and is then asked to place a row and column to hide the player's ship from the computer. the player knows where their ships are but cannot see where the computer's ships are located. Hits are indicated by ¤.
+In this single-player version, the computer hides a battleship of length 2 to 4 squares randomly on a 4x4 board. You enter guesses by specifying row and column numbers from 1 to 4. Hits are marked with '¤', misses with 'X', and your goal is to sink the entire battleship.
 
-when the player sinks all of their opponenet's battleship, the player is declared victory.
+You cannot see the computer's ships, only the results of your guesses.
+
+you can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
+
 
 ### Features 
 
@@ -48,11 +51,11 @@ I decided to use a Board class model as my model. The game creates a board class
 
 ##### Testing 
 
-I have manually tested this project by doing the following:
-- Passed the code through a PEP8 linter and confirmed there is no problems.
-- Given invalid inputs: strings when numbers are excepted, out of bounds inputs
-- Tested in my local terminal and the code insititute Heroku terminal.
-
+- Used a PEP8 linter to fix style and formatting issues.
+- Manually tested input validation by entering blank inputs, invalid characters, and out-of-range numbers to ensure the game does not crash.
+- Verified repeated guesses do not affect game flow and produce proper warnings.
+- Tested game functionality locally and on Code Institute's Heroku mock terminal environment.
+  
 ##### Bugs 
 
 __Remaining bugs__
@@ -65,18 +68,22 @@ __Validator Testing__
  
 ##### Deployment
 
-This project was deployued using Code Institiute's mock terminal for Heroku.
-- Steps for deployment:
-  - Fork or clone this repository
-  - Create a new Heroku app
-  - Set the buildbakcs to python and Node75 in that order
-  - Link the Heroku appto the repository
-  - click on Deploy
- 
+This project was deployed via Code Institute's Heroku mock terminal.
+
+Deployment steps:
+
+1. Fork or clone this repository.
+2. Create a new Heroku app on the Heroku dashboard.
+3. Set the buildpacks in this order:
+   - Python
+   - Node.js
+4. Link the Heroku app to the GitHub repository.
+5. Deploy the app through the Heroku interface.
+   
 ##### Credits 
-- Code institiute for the deployment terminal
-- Wikipedia for the details of the battleship game
-- For the project submisson course video for helping me understand more about how i can do this. 
+- Code Institute for providing the mock terminal and deployment tutorials.
+- Wikipedia for background information on Battleship gameplay.
+- The project submission course videos for instructions and guidance. 
   
   
 
