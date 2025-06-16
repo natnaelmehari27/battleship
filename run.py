@@ -66,26 +66,32 @@ def update_board_with_guess(guess, board, ship_coords, previous_guesses):
     previous_guesses.add(guess)
 
 
-def set_ship(size):
-    """
-    Add the coordinates for the ship of the game
-    """
-    num_ship = random.randint(2, size)
-    aim = random.randint(0, 1)
-    if aim == 0:
-        row_ship = [random.randint(0, size - 1)] * num_ship
-        col = random.randint(0, size - num_ship)
-        col_ship = list(range(col, col + num_ship))
-        coords = tuple(zip(row_ship, col_ship))
-    else:
-        col_ship = [random.randint(0, size -1)] * num_ship
-        row = random.randint(0, size - num_ship)
-        row_ship = list(range(row, row + num_ship))
-        coords = tuple(zip(row_ship, col_ship)) 
-    return list(coords)
-   
+def play_game():
+    # ...
+    previous_guesses = set()
 
-def make_guess():
+def create_board(size):
+    """
+    Create a size x size board initialized with '.' indicating empty water.
+    """
+    return [["." for _ in range(size)] for _ in range(size)]
+
+
+def place_ship(size):
+    """
+    Randomly place a battleship on the board either horizontally or vertically.
+    Ship length ranges from 2 up to board size.
+    Returns the list of coordinate tuples representing the ship positions.
+    """
+    ship_length = random.randint(2, size)
+    horizontal = random.choice([True, False])
+    # ...
+
+
+
+
+
+def make_guess()
     """
     Convert all strings values into integers
     """
