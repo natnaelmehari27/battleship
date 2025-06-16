@@ -39,6 +39,7 @@ def prompt_guess(size):
         except ValueError:
             print("Error: Invalid input. Please enter numeric integers only.")
 
+
 def print_board(board):
     """
     Display the board with row and column numbers for user reference.
@@ -48,7 +49,23 @@ def print_board(board):
     print("   " + " ".join(str(i + 1) for i in range(size)))
     for idx, row in enumerate(board, 1):
         print(f"{idx:<2} " + " ".join(row))
-        
+
+
+def update_board_with_guess(guess, board, ship_coords, previous_guesses):
+    """
+    Update the board for the given guess.
+    Marks hits with '¤' and misses with 'X'.
+    Handles repeated guesses gracefully.
+    Returns True if hit (and ship coordinate removed), False if miss or repeated.
+    """
+    if guess in previous_guesses:
+        print("~" * 27)
+        print("You already guessed that position. Try again.")
+        print("~" * 27)
+        return None  # Indicate repeated guess, no changes made
+    previous_guesses.add(guess)
+
+
 def set_ship(size):
     """
     Add the coordinates for the ship of the game
