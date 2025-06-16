@@ -124,6 +124,7 @@ def ask_play_again():
         else:
             print("Invalid input. Please enter 1 (Yes) or 2 (No).")
 
+
 def play_game():
     """
     Main game loop. Initializes the board and ship,
@@ -147,13 +148,19 @@ def play_game():
     print("~" * 27)
     print("Congratulations! You sunk the battleship!")
     print("~" * 27)
-    
 
 
+def main():
+    """
+    Entry point of the application,
+    manages game lifecycle and replay.
+    """
+    start_message()
+    while True:
+        play_game()
+        if not ask_play_again():
+            break
 
 
-
-
-
-
-
+if __name__ == "__main__":
+    main() 
