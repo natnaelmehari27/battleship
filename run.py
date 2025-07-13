@@ -36,6 +36,7 @@ def get_board_size():
         except ValueError:
             print("Error: Invalid input. Please enter an integer between 4 and 10.")
 
+
 def create_board(size):
     """
     Create a size x size board initialized with '.' indicating empty water.
@@ -148,7 +149,7 @@ def play_game():
     Main game loop. Initializes the board and ship,
     manages user guesses and updates until ship is sunk.
     """
-    size = 4  # default board size
+    size = get_board_size()
     board = create_board(size)
     ship_coords = place_ship(size)
     previous_guesses = set()
