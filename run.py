@@ -17,6 +17,24 @@ def start_message():
             return name
         print("Error: Name cannot be blank. Please enter your name.")
 
+def get_board_size():
+    """
+    Prompt the user to enter the board size.
+    The size must be an integer between 4 and 10 inclusive.
+    """
+    while True:
+        size_input = input("Enter board size (integer between 4 and 10, default 4): ").strip()
+        if not size_input:
+            print("Using default board size of 4.")
+            return 4
+        try:
+            size = int(size_input)
+            if 4 <= size <= 10:
+                return size
+            else:
+                print("Error: Board size must be between 4 and 10.")
+        except ValueError:
+            print("Error: Invalid input. Please enter an integer between 4 and 10.")
 
 def create_board(size):
     """
