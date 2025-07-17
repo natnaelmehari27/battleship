@@ -1,4 +1,4 @@
-import random 
+import random
 
 
 def start_message():
@@ -7,34 +7,36 @@ def start_message():
     """
     print("~" * 27)
     print("WELCOME TO BATTLESHIPS\n")
-    print("There is a Battleship hidden awaiting for you. Come and try to sink it!")
+    print("There is a battleship hidden on the grid.")
+    print("Try to sink it by guessing its coordinates!\n")
+    print("Hits are shown as '¤' and misses as 'X'.")
     print("~" * 27)
+
     while True:
         name = input("Please enter your name here: \n").strip()
         if name:
             print(f"Welcome, {name}!")
             print("~" * 27)
-            return name
+            return
         print("Error: Name cannot be blank. Please enter your name.")
+
 
 def get_board_size():
     """
     Prompt the user to enter the board size.
-    The size must be an integer between 4 and 10 inclusive.
     """
     while True:
-        size_input = input("Enter board size (integer between 4 and 10, default 4): ").strip()
+        size_input = input("Choose your grid size (3-10):").strip()
         if not size_input:
-            print("Using default board size of 4.")
-            return 4
+            print("Error: Grid size cannot be blank.")
+            continue
         try:
             size = int(size_input)
-            if 4 <= size <= 10:
+            if 3 <= size <= 10:
                 return size
-            else:
-                print("Error: Board size must be between 4 and 10.")
+            print("Please enter a number between 3 and 10.")
         except ValueError:
-            print("Error: Invalid input. Please enter an integer between 4 and 10.")
+            print("Invalid input. Please enter a number.")
 
 
 def create_board(size):
@@ -49,49 +51,55 @@ def print_board(board):
     Display the board with row and column numbers for user reference.
     """
     size = len(board)
-    # Print column headers
-    print("   " + " ".join(str(i + 1) for i in range(size)))
+    print("\n  " + " ".join(str(i + 1) for i in range(size)))
     for idx, row in enumerate(board, 1):
         print(f"{idx:<2} " + " ".join(row))
+    print()
 
 
 def place_ship(size):
     """
     Randomly place a battleship on the board either horizontally or vertically.
-    Ship length ranges from 2 up to board size.
-    Returns the list of coordinate tuples representing the ship positions.
     """
     ship_length = random.randint(2, size)
     horizontal = random.choice([True, False])
+
     if horizontal:
         row = random.randint(0, size - 1)
         col_start = random.randint(0, size - ship_length)
-        ship_coords = [(row, col) for col in range(col_start, col_start + ship_length)]
+        return [
+            (row, col)
+            for col in range(col_start, col_start + ship_length)
+        ]
     else:
         col = random.randint(0, size - 1)
         row_start = random.randint(0, size - ship_length)
-        ship_coords = [(row, col) for row in range(row_start, row_start + ship_length)]
-    return ship_coords
+        return [
+            (row, col)
+            for row in range(row_start, row_start + ship_length)
+        ]
 
 
 def prompt_guess(size):
     """
     Prompt the user to enter a valid guess within the board range.
-    Returns zero-based (row, col) tuple.
     """
     while True:
         try:
-            print(f"Enter your guess coordinates (row and column) between 1 and {size}.")
+            print(f"Enter coordinates (1 to {size}):")
             row_input = input("Row: ").strip()
             col_input = input("Column: ").strip()
+
             if not row_input or not col_input:
                 print("Error: Input cannot be blank. Please enter numbers.")
                 continue
+
             row = int(row_input)
             col = int(col_input)
+
             if 1 <= row <= size and 1 <= col <= size:
                 return row - 1, col - 1
-            print(f"Error: Coordinates out of bounds. Please enter numbers 1 to {size}.")
+            print(f"Error: Coordinates must be between 1 and {size}.")
         except ValueError:
             print("Error: Invalid input. Please enter numeric integers only.")
 
@@ -101,27 +109,27 @@ def update_board_with_guess(guess, board, ship_coords, previous_guesses):
     Update the board for the given guess.
     Marks hits with '¤' and misses with 'X'.
     Handles repeated guesses gracefully.
-    Returns True if hit (and ship coordinate removed), False if miss or repeated.
     """
     if guess in previous_guesses:
         print("~" * 27)
         print("You already guessed that position. Try again.")
         print("~" * 27)
         return None  # Indicate repeated guess, no changes made
+
     previous_guesses.add(guess)
 
     if guess in ship_coords:
+        board[guess[0]][guess[1]] = "¤"
+        ship_coords.remove(guess)
         print("~" * 27)
         print("Bravo! You hit the battleship!")
         print("~" * 27)
-        board[guess[0]][guess[1]] = "¤"
-        ship_coords.remove(guess)
         return True
     else:
+        board[guess[0]][guess[1]] = "X"
         print("~" * 27)
         print("Oops! You missed.")
         print("~" * 27)
-        board[guess[0]][guess[1]] = "X"
         return False
 
 
@@ -131,25 +139,26 @@ def ask_play_again():
     Returns True if yes, False if no.
     """
     while True:
-        choice = input("Would you like to play again? (1 for Yes, 2 for No): ").strip()
-        if choice == "1":
-            print("Starting a new game!")
+        choice = input("Play again? (1 = Yes, 2 = No): ").strip()
+        if not choice:
+            print("Input cannot be blank. Please enter 1 or 2.")
+        elif choice == "1":
+            print("\nStarting a new game...")
             print("~" * 27)
             return True
         elif choice == "2":
-            print("Thanks for playing Battleships! Goodbye!")
+            print("Thanks for playing! Goodbye.")
             print("~" * 27)
             return False
         else:
-            print("Invalid input. Please enter 1 (Yes) or 2 (No).")
+            print("Invalid choice. Enter 1 for Yes or 2 for No.")
 
 
-def play_game():
+def play_game(size):
     """
     Main game loop. Initializes the board and ship,
     manages user guesses and updates until ship is sunk.
     """
-    size = get_board_size()
     board = create_board(size)
     ship_coords = place_ship(size)
     previous_guesses = set()
@@ -157,7 +166,9 @@ def play_game():
     while ship_coords:
         print_board(board)
         guess = prompt_guess(size)
-        result = update_board_with_guess(guess, board, ship_coords, previous_guesses)
+        result = update_board_with_guess(
+            guess, board, ship_coords, previous_guesses
+        )
 
         # If repeated guess, no need to check for win since no progress
         if result is None:
@@ -176,10 +187,11 @@ def main():
     """
     start_message()
     while True:
-        play_game()
+        size = get_board_size()
+        play_game(size)
         if not ask_play_again():
             break
 
 
 if __name__ == "__main__":
-    main() 
+    main()
