@@ -106,7 +106,6 @@ def prompt_guess(size):
 
 def update_board_with_guess(guess, board, ship_coords, previous_guesses):
     """
-    Update the board for the given guess.
     Marks hits with '¤' and misses with 'X'.
     Handles repeated guesses gracefully.
     """
